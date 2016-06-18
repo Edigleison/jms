@@ -1,0 +1,32 @@
+package jms;
+
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSContext;
+import javax.jms.JMSProducer;
+import javax.jms.Queue;
+import javax.jms.Session;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class EnviadorParaFila {
+
+	public static void main(String[] args) throws Exception {
+		InitialContext ic = new InitialContext();
+		ConnectionFactory factory = (ConnectionFactory) ic.lookup("jms/remoteConnectionFactory");
+		Connection connection = factory.createConnection();
+		Session session = connection.createSession();
+		
+		Queue queue = (Queue) ic.lookup("jms/FILA.GERADOR");
+		
+		JMSContext jmsContext = factory.createContext("jms", "jms");		
+		JMSProducer producer = (JMSProducer) jmsContext.createProducer();
+		connection.start();
+		
+		producer.send(queue, "teste");
+		
+		session.close();
+		connection.close();		
+		ic.close();
+	}
+}

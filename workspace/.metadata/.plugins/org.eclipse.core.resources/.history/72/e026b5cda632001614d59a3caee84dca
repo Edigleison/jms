@@ -1,0 +1,23 @@
+package jms;
+
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSConsumer;
+import javax.jms.JMSContext;
+import javax.jms.Topic;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class RegistraTratadorMensagensTopico {
+
+	public static void main(String[] args) throws Exception {
+		InitialContext ic = new InitialContext();
+		ConnectionFactory factory = (ConnectionFactory) ic.lookup("jms/RemoteConnectionFactory");
+		Topic topic = (Topic) ic.lookup("jms/TOPICO.LIVRARIA");
+		
+		JMSContext jmsContext = factory.createContext("jms", "jms");
+		jmsContext.setClientID("Financeiro");
+		JMSConsumer consumer = jmsContext.createDurableConsumer(topic, "AssinaturaNotas");
+		
+		
+	}
+}

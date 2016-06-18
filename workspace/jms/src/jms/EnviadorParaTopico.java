@@ -1,0 +1,24 @@
+package jms;
+
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSContext;
+import javax.jms.JMSProducer;
+import javax.jms.Topic;
+import javax.naming.InitialContext;
+
+public class EnviadorParaTopico {
+	
+	public static void main(String[] args) throws Exception {
+		InitialContext ic = new InitialContext();
+		ConnectionFactory factory = (ConnectionFactory) ic.lookup("jms/RemoteConnectionFactory");
+		Topic topico = (Topic) ic.lookup("jms/TOPICO.LIVRARIA");
+		
+		JMSContext jmsContext = factory.createContext("jms", "jms");
+		JMSProducer producer = jmsContext.createProducer();
+		
+		producer.send(topico, "teste topico 2");
+		
+		jmsContext.stop();
+	}
+
+}

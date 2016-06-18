@@ -1,0 +1,13 @@
+package jms;
+
+import javax.jms.ConnectionFactory;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class RegistraTratadorMensagensTopico {
+
+	public static void main(String[] args) throws Exception {
+		InitialContext ic = new InitialContext();
+		ConnectionFactory factory = (ConnectionFactory) ic.lookup("jms/RemoteConnectionFactory");		
+	}
+}

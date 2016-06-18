@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<publish-info>
+  <server id="WildFly  9.x 1466292827877" path="publish1.dat"/>
+  <server id="WildFly  8.x1466287176464" path="publish0.dat"/>
+</publish-info>

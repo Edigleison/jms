@@ -1,0 +1,13 @@
+package jms;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class EnviadorParaTopico {
+	
+	public static void main(String[] args) throws Exception {
+		InitialContext ic = new InitialContext();
+		
+	}
+
+}

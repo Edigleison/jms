@@ -1,0 +1,16 @@
+package jms;
+
+import javax.jms.ConnectionFactory;
+import javax.jms.Queue;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class RegistraTratadorMensagensFila {
+
+	public static void main(String[] args) throws Exception {
+		InitialContext ic = new InitialContext();
+		ConnectionFactory factory = (ConnectionFactory) ic.lookup("jms/RemoteConnectionFactory");
+		Queue queue = (Queue) ic.lookup("jms/FILA.GERADOR");
+		
+	}
+}

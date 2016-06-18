@@ -1,0 +1,13 @@
+package jms;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class EnviadorParaFila {
+
+	public static void main(String[] args) throws Exception {
+		InitialContext context = new InitialContext();
+		
+		
+	}
+}
